@@ -18,5 +18,5 @@ jobs:
         with: { ruby-version: "3.3", bundler-cache: true }
       - run: bundle exec rake test
       - uses: rubygems/release-gem@v1
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with: { generate_release_notes: true }
