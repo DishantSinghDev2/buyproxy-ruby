@@ -1,7 +1,5 @@
 # BuyProxy Ruby SDK — Residential Proxy API Client Gem
 
-[![Gem](https://img.shields.io/gem/v/buyproxy?logo=rubygems&logoColor=white)](https://rubygems.org/gems/buyproxy)
-[![downloads](https://img.shields.io/gem/dt/buyproxy)](https://rubygems.org/gems/buyproxy)
 [![CI](https://github.com/DishantSinghDev2/buyproxy-ruby/actions/workflows/ci.yml/badge.svg)](https://github.com/DishantSinghDev2/buyproxy-ruby/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -18,11 +16,7 @@ The official **Ruby gem** for [BuyProxy](https://www.buyproxy.org): generate **r
 
 ## Installation
 
-```bash
-gem install buyproxy
-# or in your Gemfile:
-bundle add buyproxy
-```
+The `buyproxy` gem isn't on RubyGems yet.
 
 Ruby 3.0+. No runtime dependencies (uses `Net::HTTP`).
 
@@ -34,9 +28,9 @@ require "buyproxy"
 bp = BuyProxy::Client.new(api_key: ENV["BUYPROXY_API_KEY"]) # or omit — reads BUYPROXY_API_KEY
 
 plan = bp.plans.list.first
-result = bp.plans.generate(plan.id, country: "US", city: "Austin", count: 5)
+result = bp.plans.generate(plan.id, country: "US", count: 5)
 
-puts result.first.url # http://user-country-us-city-austin:pass@gw.buyproxy.org:6969
+puts result.first.url # http://user-country-us:pass@gw.buyproxy.org:6969
 ```
 
 Pass `sticky_minutes: 10` to keep the same IP for ten minutes, or `protocol: "socks5"` for SOCKS5.
@@ -165,7 +159,7 @@ Create a free account at [buyproxy.org](https://www.buyproxy.org/signup), then o
 A personal key (`bp_key_…`) manages your own bandwidth: balances, plans, generating proxies, top-ups and payments. A reseller key (`bp_live_…`) manages *your customers*: create isolated sub-accounts, buy bandwidth into a pool, allocate it, suspend or reactivate, and generate proxies on their behalf.
 
 **Which proxy types are available?**
-Core Residential, Premium Residential, ISP Rotating, Mobile, Datacenter IPv4 and IPv6 — call the catalog endpoint for the live list and per-GB prices (from **$1.99/GB**).
+Core Residential, Premium Residential, ISP Rotating, Mobile, Datacenter IPv4 and IPv6 — call the catalog endpoint for the live list and per-GB prices (residential from **$0.99/GB**, IPv6 from **$0.29/GB**).
 
 **Do generated proxies expire, and when is bandwidth used?**
 Generating a proxy is free and instant; bandwidth is only consumed when traffic flows through it. Lines are on-demand — generate fresh ones rather than storing them.
